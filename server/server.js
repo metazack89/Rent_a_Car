@@ -1,7 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
-import connectDB from './configs/db.js';
+import mongoose from 'mongoose';
 import userRouter from './routes/userRoutes.js';
 import ownerRouter from './routes/ownerRoutes.js';
 import bookingRouter from './routes/bookingRoutes.js';
@@ -11,49 +11,50 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-let isConnected = false;
-async function initDB() {
-  if (!isConnected) {
-    try {
-      await connectDB();
-      isConnected = true;
-      console.log('MongoDB connected');
-    } catch (error) {
-      console.error('DB connection error:', error);
+async function connectDB() {
+  if (globalThis.mongo) {
+    if (globalThis.mongo.isConnected) {
+      console.log('Using existing MongoDB connection');
+      return;
     }
+    await globalThis.mongo.promise;
+    return;
   }
+
+  const mongoUri = process.env.MONGO_URI;
+  if (!mongoUri) throw new Error('MONGO_URI no está definido en .env');
+
+  const connectionPromise = mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  globalThis.mongo = {
+    isConnected: false,
+    promise: connectionPromise,
+  };
+
+  await connectionPromise;
+  globalThis.mongo.isConnected = true;
+  console.log('MongoDB connected');
 }
 
-app.get('/', async (req, res) => {
-  await initDB();
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('DB connection error:', err);
+    res.status(500).json({ error: 'Database connection failed' });
+  }
+});
+
+app.get('/', (req, res) => {
   res.send('Server is running');
 });
 
-app.use(
-  '/api/user',
-  async (req, res, next) => {
-    await initDB();
-    next();
-  },
-  userRouter
-);
-
-app.use(
-  '/api/owner',
-  async (req, res, next) => {
-    await initDB();
-    next();
-  },
-  ownerRouter
-);
-
-app.use(
-  '/api/bookings',
-  async (req, res, next) => {
-    await initDB();
-    next();
-  },
-  bookingRouter
-);
+app.use('/api/user', userRouter);
+app.use('/api/owner', ownerRouter);
+app.use('/api/bookings', bookingRouter);
 
 export default app;
