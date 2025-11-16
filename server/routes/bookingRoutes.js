@@ -5,8 +5,8 @@ import {
   createBooking,
   getOwnerBookings,
   getUserBookings,
-} from '../../ccc/controllers/bookingController.js';
-import { protect } from '../../ccc/middleware/auth.js';
+} from '../controllers/bookingController.js';
+import { protect } from '../middleware/auth.js';
 
 const bookingRouter = express.Router();
 

@@ -12,14 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/node": "^4.0.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "express": "^5.1.0",
     "imagekit": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.16.0",
+    "mongoose": "^8.19.4",
     "multer": "^2.0.1"
+  },
+  "overrides": {
+    "esbuild": "^0.27.0",
+    "undici": "^7.16.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
