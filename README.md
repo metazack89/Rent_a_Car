@@ -7,8 +7,8 @@ React • Node.js • MongoDB • JWT • Tailwind • Vercel
 <br/> <img src="https://img.shields.io/badge/STATUS-EN%20DESARROLLO-blue?style=for-the-badge"/> <img src="https://img.shields.io/badge/STACK-MERN-purple?style=for-the-badge"/> <img src="https://img.shields.io/badge/PRs-WELCOME-brightgreen?style=for-the-badge"/> <img src="https://img.shields.io/badge/DEPLOY-Vercel-black?style=for-the-badge"/>
 
 <br/><br/>
-
-<img src="https://github.com/user-attachments/assets/rentacar.jpg" alt="banner" width="100%" /> </div>
+![rentacar](https://github.com/user-attachments/assets/4027a2d2-eaa2-4eb1-bf3e-9aac191c82e8)
+ </div>
 🧭 Descripción del Proyecto
 
 Rent A Car es una aplicación fullstack diseñada para administrar el alquiler de vehículos de manera sencilla y eficiente.
