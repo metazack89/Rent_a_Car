@@ -8,6 +8,7 @@ React • Node.js • MongoDB • JWT • Tailwind • Vercel
 
 <br/><br/>
 ![rentacar](https://github.com/user-attachments/assets/4027a2d2-eaa2-4eb1-bf3e-9aac191c82e8)
+
  </div>
 🧭 Descripción del Proyecto
 
@@ -93,15 +94,18 @@ PORT=5000
 MONGO_URI=mongodb://localhost:27017/rentacar
 JWT_SECRET=clave_super_segura
 
-📡 Endpoints Principales
-Método Endpoint Descripción
-POST /auth/register Registrar usuario
-POST /auth/login Iniciar sesión
-GET /cars Listar autos
-POST /cars Crear auto (admin)
-POST /bookings Crear reserva
-GET /bookings/user Reservas del usuario
-🤝 Contribuciones
+📡 **Endpoints Principales**
+
+| Método | Endpoint       | Descripción          |
+| ------ | -------------- | -------------------- |
+| POST   | /auth/register | Registrar usuario    |
+| POST   | /auth/login    | Iniciar sesión       |
+| GET    | /cars          | Listar autos         |
+| POST   | /cars          | Crear auto (admin)   |
+| POST   | /bookings      | Crear reserva        |
+| GET    | /bookings/user | Reservas del usuario |
+
+🤝 **Contribuciones**
 
 ¡Las contribuciones son bienvenidas!
 Si deseas colaborar:
