@@ -72,26 +72,28 @@ Código limpio con buenas prácticas
 ⚙️ Backend
 <div> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="40"/> </div>
 
-🏁 Instalación
-▶️ Frontend
+🚀 Instalación
+🖥️ Frontend
 cd client
 npm install
 npm run dev
 
-.env ejemplo:
+.env ejemplo (Frontend):
+
 VITE_API_URL=http://localhost:5000
 
-🖥️ Backend
+🛠️ Backend
 cd server
 npm install
 npm start
 
-.env ejemplo:
+.env ejemplo (Backend):
+
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/rentacar
 JWT_SECRET=clave_super_segura
 
-📡 Endpoints principales
+📡 Endpoints Principales
 Método Endpoint Descripción
 POST /auth/register Registrar usuario
 POST /auth/login Iniciar sesión
@@ -102,14 +104,22 @@ GET /bookings/user Reservas del usuario
 🤝 Contribuciones
 
 ¡Las contribuciones son bienvenidas!
-Puedes abrir un Issue o un Pull Request para colaborar.
+Si deseas colaborar:
+
+Abre un Issue
+
+Envía un Pull Request
+
+Cualquier mejora, optimización o sugerencia es apreciada ❤️
 
 ⭐ Apoya el Proyecto
 
-Si este proyecto te ayuda o te inspira, considera dejar una estrella ⭐ en GitHub.
-¡Tu apoyo mantiene vivo el desarrollo!
+Si este proyecto te ayudó o te inspiró:
+👉 Deja una estrella en GitHub ⭐
+
+Tu apoyo impulsa el desarrollo de más proyectos como este.
 
 📬 Contacto
 
-¿Quieres colaborar o tienes dudas?
-Abre un Issue en el repositorio o escríbeme directamente.
+¿Quieres colaborar, sugerir mejoras o reportar un bug?
+📩 Abre un Issue en el repositorio o contáctame directamente.
