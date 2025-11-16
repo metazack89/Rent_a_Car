@@ -6,20 +6,54 @@ import userRouter from './routes/userRoutes.js';
 import ownerRouter from './routes/ownerRoutes.js';
 import bookingRouter from './routes/bookingRoutes.js';
 
-// Initialize Express App
 const app = express();
 
-// Connect Database
-await connectDB();
-
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('Server is running'));
-app.use('/api/user', userRouter);
-app.use('/api/owner', ownerRouter);
-app.use('/api/bookings', bookingRouter);
+let isConnected = false;
+async function initDB() {
+  if (!isConnected) {
+    try {
+      await connectDB();
+      isConnected = true;
+      console.log('MongoDB connected');
+    } catch (error) {
+      console.error('DB connection error:', error);
+    }
+  }
+}
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.get('/', async (req, res) => {
+  await initDB();
+  res.send('Server is running');
+});
+
+app.use(
+  '/api/user',
+  async (req, res, next) => {
+    await initDB();
+    next();
+  },
+  userRouter
+);
+
+app.use(
+  '/api/owner',
+  async (req, res, next) => {
+    await initDB();
+    next();
+  },
+  ownerRouter
+);
+
+app.use(
+  '/api/bookings',
+  async (req, res, next) => {
+    await initDB();
+    next();
+  },
+  bookingRouter
+);
+
+export default app;
